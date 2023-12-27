@@ -1,6 +1,6 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../Firebase";
+import { auth, googleProvider } from "../Firebase";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -22,6 +22,18 @@ const Login = () => {
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = await signInWithPopup(auth, googleProvider);
+      console.log(provider);
+      localStorage.setItem("token", provider.user.accessToken);
+      localStorage.setItem("user", JSON.stringify(provider.user));
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -115,6 +127,7 @@ const Login = () => {
             </Link>
           </p>
         </div>
+        <button onClick={handleGoogleLogin}>Sign In with Google</button>
       </div>
     </>
   );
