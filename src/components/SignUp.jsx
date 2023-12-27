@@ -95,7 +95,6 @@ const SignUp = () => {
                 />
               </div>
             </div>
-
             <div>
               <button
                 type="submit"
