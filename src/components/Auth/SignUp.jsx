@@ -1,10 +1,9 @@
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth, googleProvider } from "../Firebase";
+import { auth } from "../../Firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
@@ -23,18 +22,6 @@ const Login = () => {
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    try {
-      const provider = await signInWithPopup(auth, googleProvider);
-      console.log(provider);
-      localStorage.setItem("token", provider.user.accessToken);
-      localStorage.setItem("user", JSON.stringify(provider.user));
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -51,7 +38,7 @@ const Login = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-            Log in to your account
+            Sign up to your account
           </h2>
         </div>
 
@@ -108,7 +95,6 @@ const Login = () => {
                 />
               </div>
             </div>
-
             <div>
               <button
                 type="submit"
@@ -117,22 +103,13 @@ const Login = () => {
                 Sign in
               </button>
             </div>
-            <div>
-              <button
-                onClick={handleGoogleLogin}
-                className="w-full justify-center inline-flex items-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                <FcGoogle />
-                Login with Google
-              </button>
-            </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-400">
             Not a member?{" "}
-            <Link to="/signup">
+            <Link to="/login">
               <a className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300">
-                Create an Account
+                Login with an existing account
               </a>
             </Link>
           </p>
@@ -141,4 +118,4 @@ const Login = () => {
     </>
   );
 };
-export default Login;
+export default SignUp;

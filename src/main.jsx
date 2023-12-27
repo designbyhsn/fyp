@@ -8,10 +8,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import SignUp from "./components/Signup.jsx";
-import Login from "./components/Login.jsx";
-import Protected from "./components/Protected.jsx";
-import Home from "./components/Home.jsx";
+import SignUp from "./components/Auth/SignUp.jsx";
+import Login from "./components/Auth/Login.jsx";
+import Protected from "./components/Auth/Protected.jsx";
+import Home from "./components/Auth/Home.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
