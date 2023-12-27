@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { auth, googleProvider } from "../Firebase";
 import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -116,6 +117,15 @@ const Login = () => {
                 Sign in
               </button>
             </div>
+            <div>
+              <button
+                onClick={handleGoogleLogin}
+                className="w-full justify-center inline-flex items-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                <FcGoogle />
+                Login with Google
+              </button>
+            </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-400">
@@ -127,7 +137,6 @@ const Login = () => {
             </Link>
           </p>
         </div>
-        <button onClick={handleGoogleLogin}>Sign In with Google</button>
       </div>
     </>
   );
