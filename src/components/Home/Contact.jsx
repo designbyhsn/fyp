@@ -40,7 +40,7 @@ const Contact = () => {
   return (
     <div className="relative isolate bg-gray-900">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+        <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-36">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2">
               <svg
@@ -90,9 +90,7 @@ const Contact = () => {
               Get in touch
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Proin volutpat consequat porttitor cras nullam gravida at. Orci
-              molestie a eu arcu. Sed ut tincidunt integer elementum id sem.
-              Arcu sed malesuada et magna.
+              Send us a message and we'll get back to you soon!
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-300">
               <div className="flex gap-x-4">
@@ -147,7 +145,7 @@ const Contact = () => {
           onSubmit={handleSubmit}
           action="#"
           method="POST"
-          className="emailForm px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
+          className="emailForm px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-36"
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
